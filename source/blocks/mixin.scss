@@ -1,0 +1,93 @@
+//@mixin ColBlock10($maxCol,$contCol){
+//  position: relative;
+//  display: inline-block;
+//  width: (100%/$maxCol)*$contCol;
+//}
+//
+
+//MIXIN BLOCK!!!
+
+@mixin block() {
+  display: block;
+  margin: 0;
+  position: relative;
+
+}
+
+@mixin row($margin) {
+
+  &_row {
+    font-size: 0;
+    position: relative;
+    margin-left: -$margin+px;
+    margin-right: -$margin+px;
+  }
+}
+
+//@mixin resize($args...){
+//  @each $size,$col in $args {
+//    @media (min-width: $size+px){
+//      display: inline-block;
+//      width:  unquote($col + '%' );
+//    }
+//  }
+//}
+
+@mixin resize($args...) {
+  $names: '';
+
+  @for $i from 1 through length($args) {
+
+    $block: nth($args, $i);
+
+    $col: nth($block, 2);
+
+    @if $i==1 {
+      $names: $names+$col;
+    } @else {
+      $names: $names+'x'+$col;
+    }
+  }
+
+  &_width_#{$names} {
+    @each $size,$col in $args {
+      @media (min-width: $size+px){
+        display: inline-block;
+        width:  unquote($col + '%' );
+      }
+    }
+  }
+}
+
+@mixin positionContent($position) {
+  vertical-align: $position;
+  &:after {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    width: 0;
+    vertical-align: middle;
+  }
+}
+
+//CREATE MOD BORDER
+
+@mixin borderType($size, $border) {
+  &_border_#{$border}_#{$size} {
+    border: $size+px $border;
+  }
+}
+
+//MIXIN BUTTON
+
+@mixin button() {
+  width: 100%;
+  font-size: 14px;
+  font-size: 0.9rem;
+  border: none;
+  color: #000;
+  font-family: sans;
+  background: #ccc;
+  text-align: center;
+  cursor: pointer;
+}

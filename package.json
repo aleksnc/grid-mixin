@@ -1,0 +1,16 @@
+{
+  "name": "naf-naf",
+  "varsion": "0.2.0",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-autoprefixer": "latest",
+    "grunt-browser-sync": "latest",
+    "grunt-combine-media-queries": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-pug": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-image": "latest",
+    "grunt-sass": "^2.0.0"
+  },
+  "dependencies": {}
+}

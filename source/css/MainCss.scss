@@ -1,0 +1,82 @@
+@import "../blocks/mixin.scss";
+@import "variables";
+@import "global";
+
+.menu {
+  //обнуляет блоки
+  @include block();
+  //создает модификатор родителя &_row для обнуления отступа паддингов
+  @include row($indent);
+
+  &__list {
+    //медиа запрос размера элемета
+    //320 - ширина экрана
+    //100 - ширина элемента относительно экрана
+    @include resize((320, 100), (480, 50), (1024, 25));
+    padding: $indent+px;
+  }
+
+  &__link {
+    display: block;
+    font-size: 16px;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+    padding: $indent+px;
+
+    //создает модификатор бордрера &_border_solid_1
+    @include borderType(1, solid);
+    @include borderType(2, dotted);
+    @include borderType(3, dashed);
+    @include borderType(4, solid);
+    @include borderType(5, solid);
+    @include borderType(6, solid);
+
+    &_border_color {
+      border-color: $first;
+    }
+  }
+}
+
+.form {
+  @include block();
+  display: block;
+
+  &__button {
+    max-width: 100px;
+    padding: 3px;
+  }
+
+}
+
+.btn {
+  @include block();
+
+  //обнуляет любой блок под кнопку
+  @include button();
+}
+
+.grid {
+  @include block();
+  @include row($indent);
+
+  &__element {
+    font-size: 16px;
+    padding: $indent+px;
+
+    @include resize((320, 100), (480, 50), (1024, 10));
+    @include resize((320, 100), (480, 50), (1024, 80));
+    @include resize((320, 100), (480, 50), (1024, 70));
+    @include resize((320, 100), (480, 50), (1024, 30));
+    @include resize((320, 100), (480, 50), (1024, 20));
+  }
+
+  &__content {
+    padding: 5px;
+    @include borderType(3, solid);
+
+    &_border_color {
+      border-color: $primaryColor;
+    }
+  }
+}
